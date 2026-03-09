@@ -14,6 +14,7 @@ for k, v in [('authenticated',False),('username',''),('dark_mode',False),('show_
     if k not in st.session_state: st.session_state[k] = v
 
 # ━━━ DB HELPERS ━━━
+@st.cache_resource
 def db():
     return libsql_client.create_client_sync(url=TURSO_URL, auth_token=TURSO_TOKEN)
 
@@ -21,14 +22,12 @@ def run(sql, params=None):
     client = db()
     if params: rs = client.execute(sql, params)
     else: rs = client.execute(sql)
-    client.close()
     return rs
 
 def query_df(sql, params=None):
     client = db()
     if params: rs = client.execute(sql, params)
     else: rs = client.execute(sql)
-    client.close()
     if not rs.columns: return pd.DataFrame()
     return pd.DataFrame(rs.rows, columns=rs.columns)
 
@@ -37,7 +36,6 @@ def query_val(sql, params=None):
     client = db()
     if params: rs = client.execute(sql, params)
     else: rs = client.execute(sql)
-    client.close()
     if rs.rows: return rs.rows[0][0]
     return None
 
