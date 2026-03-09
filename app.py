@@ -5,7 +5,7 @@ import hashlib
 import io
 from datetime import datetime, timedelta
 
-TURSO_URL = "libsql://app-jeasaa.aws-eu-west-1.turso.io"
+TURSO_URL = "https://app-jeasaa.aws-eu-west-1.turso.io"
 TURSO_TOKEN = "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3NzMwNjM0ODksImlkIjoiMDE5Y2QyY2UtZmUwMS03YjYyLTk4MjEtN2M1NjcxNjBiMDBmIiwicmlkIjoiMmVlNTYwNTYtMmJkZC00NmMzLTllZmEtODY3Yjc1MGI5ZmMyIn0.W5_YArM9r3v7hd8fy65ZRf5ya2xrPhmmmref4NdCUmhR8j6XytZ2_g73yALIJC8C5h9n-1BzBkix9X3FQ_yOAA"
 TECHNIQUES = ["FTID", "LIT", "RTS", "DNA", "EB"]
 
